@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <title>Student List</title>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar" align = "right">
+        <a href="/form" class="btn">Add Student</a></button>
+
+    </nav>
+
+    <h2>Student List</h2>
+
+    <table border="1" style="width:100%; margin-top: 15px; border-collapse: collapse;">
+        <thead>
+        <tr>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>Mobile No</th>
+            <th>Blood Group</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.rollno}"></td>
+            <td th:text="${student.sname}"></td>
+            <td th:text="${student.mobileno}"></td>
+            <td th:text="${student.bloodgrp}"></td>
+            <td>
+                <a th:href="@{'/edit/' + ${student.rollno}}">Edit</a> |
+                <a th:href="@{'/delete/' + ${student.rollno}}"
+                   onclick="return confirm('Are you sure you want to delete?')">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

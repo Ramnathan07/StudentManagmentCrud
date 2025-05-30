@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Form</title>
+</head>
+<body>
+<h2 th:text="${student.rollno != null and student.rollno > 0 ? 'Edit Student' : 'Add Student'}"></h2>
+<form th:action="@{/save}" th:object="${student}" method="post">
+
+    Roll No:
+    <input type="number" th:field="*{rollno}" th:attr="readonly=${student.rollno != null}" /><br/>
+
+    Name: <input type="text" th:field="*{sname}" /><br/>
+    Mobile No: <input type="number" th:field="*{mobileno}" /><br/>
+    Blood Group: <input type="text" th:field="*{bloodgrp}" /><br/>
+    <button type="submit">Save</button>
+</form>
+<a href="/">Back to List</a>
+</body>
+</html>
